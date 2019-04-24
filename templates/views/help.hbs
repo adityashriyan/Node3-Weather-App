@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="/img/weather.png">
+        <link rel="stylesheet" href="/css/styles.css">
+        <title>
+            Help Page
+        </title>
+    </head>
+    <body>
+        <div class="main-content"> 
+            {{>header}}
+            <ol>
+                <li>
+                    {{contacts.0.name}}<br>
+                    {{contacts.0.details}}
+                </li>
+            </ol>
+        </div>
+        {{>footer}}
+    </body>
+</html>
