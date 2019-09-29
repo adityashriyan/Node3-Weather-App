@@ -5,6 +5,7 @@ const hbs = require('hbs')
 
 // Loading API modules
 const geocode = require('./utils/geocode')
+const reverseGeocode = require('./utils/reverseGeocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
@@ -62,11 +63,7 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-    if (!req.query.address) {
-        return res.send({
-            error: 'You must provide an address!'
-        }) 
-    } else {
+    if (req.query.address) {
         geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
             if (error) {
                 return res.send({ error })
@@ -77,12 +74,31 @@ app.get('/weather', (req, res) => {
                 }
     
                 res.send({
-                    address: req.query.address,
                     location,
                     forecast
                 })
             })
         })
+    } else if (req.query.latitude) {
+        reverseGeocode(req.query.latitude, req.query.longitude, (error, { latitude, longitude, location } = {}) => {
+            if (error) {
+                return res.send({ error })
+            }
+            forecast(latitude, longitude, (error, forecast = '') => {
+                if (error) {
+                    return res.send({ error })
+                }
+    
+                res.send({
+                    location,
+                    forecast
+                })
+            })
+        })
+    } else {
+        return res.send({
+            error: 'You must provide an address!'
+        }) 
     }
 })
 
