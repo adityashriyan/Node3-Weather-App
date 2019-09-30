@@ -1,7 +1,7 @@
 const request = require('request')
 
 const reverseGeocode = (latitude, longitude, callback) => {
-    const url = 'https://api.opencagedata.com/geocode/v1/json?key=9854d0c971b541ec8c29349d08389c52&q=' + latitude + '%2C' + longitude +'&pretty=1'
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + longitude + ',' + latitude +'.json?access_token=pk.eyJ1IjoiYWRpcGFkaTMiLCJhIjoiY2p1ODlkZ21hMXc5bjQzbnJ6c2czMmtpNCJ9.xxlqr7q4SmGnQdnSuPw8Cg'
 
     request({url, json: true}, (error, {body} = {}) => {
         if (body == undefined) {
@@ -10,7 +10,7 @@ const reverseGeocode = (latitude, longitude, callback) => {
             callback(undefined, {
                 latitude,
                 longitude,
-                location: body.results[0].formatted
+                location: body.features[0].place_name
             })
         }
     })
