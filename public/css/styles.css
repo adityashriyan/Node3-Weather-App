@@ -1,7 +1,7 @@
 body {
     color:#333333;
     font-family: arial;
-    max-width: 650px;
+    max-width: 85vw;
     margin: 0 auto;
     padding: 0 16px;
 
@@ -24,11 +24,14 @@ footer {
 header {
     margin-top: 16px;
     margin-bottom: 48px;
+    font-size: 3vh;
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 10vh;
+    margin-top: 0px;
     margin-bottom: 16px;
+    text-shadow: 2px 2px 3px #888888;
 }
 
 header a {
