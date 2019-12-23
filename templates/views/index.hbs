@@ -2,13 +2,17 @@
 <html>
     <head>
         <title>Weather</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.1, shrink-to-fit=no, user-scalable=no">
+
         <link rel="icon" href="/img/weather.png">
         <link rel="stylesheet" href="/css/styles.css">
     </head>
 
     <body>
+        {{>header}}
         <div class="main-content">
-            {{>header}}
             <p>
                 Use this site to get your weather.
             </p>
@@ -18,7 +22,6 @@
             </form> <br>
             <b>OR</b> <br> <br>
             <button id="geolocator"> Use my Location </button>
-
             <p id="message-1"></p>
             <p id="message-2"></p>
         </div>
