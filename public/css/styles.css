@@ -10,6 +10,12 @@ body {
     min-height: 100vh;
 }
 
+@media only screen and (max-width: 768px) {
+    body {
+        min-height: 90vh;
+    }
+}
+
 .main-content {
     flex-grow: 1;
     font-size: min(20px,2.5vh);
